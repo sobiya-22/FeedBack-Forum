@@ -1,0 +1,59 @@
+body{
+    background-color: #E8D8C4;
+    margin: 0;
+}
+.NavBar{
+    background-color: #C7B7A3;
+    border-bottom:3px solid#561C24;
+    margin: 0;
+}
+.NavBar img{
+    height:125px;
+    width: 125px;
+    padding-right: 400px;
+    
+}
+.logo{
+    display: inline-block;
+    border: solid black 5px;
+    background-color: #C7B7A3;
+    border-radius: 50%;
+    height: 250px;
+    width: 250px;
+    position: relative;
+    
+}
+h1{
+    display: inline;
+    font-family: "Libre Baskerville", "static";  
+    left: 500px;
+    font-size: 2.5rem;
+    color: #561C24;
+}
+.logos div{
+    position: absolute;
+    top: 270px;
+    left: 400px;
+}
+
+#l2{
+    left:400px
+}
+button{
+    top: 30px;
+    background-color:#C7B7A3;
+    border: 2px solid #561C24;
+    border-radius: 12px;
+    position: absolute;
+    top: 300px;
+    width: 200px;
+    height: 40px;
+}
+ .button1{
+    position: absolute;
+    left: 40px;
+}
+.button2{
+    position: absolute;
+     left: 440px;
+}
