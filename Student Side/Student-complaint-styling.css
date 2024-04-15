@@ -75,17 +75,35 @@ nav ul li a{
     background: #ccc;
     margin: 15px 0 10px;
 }*/
-.form-container {
-    display: inline;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh; 
-    font-weight: 500;
-}
-
 /* CSS for the form */
+.side-navbar{
+    z-index: 1;
+    position: fixed;
+    overflow-x: hidden;
+    height:600px;
+    width: 250px;
+    top: 100px;
+    bottom: 100px;
+    left: 0;
+    border-top: 60px;
+    border: 3px solid rgb(119, 1, 134);
+    padding-top: 60px;
+    margin-left: 0;
+}
+.side-navbar a{
+    text-decoration: none;
+    display: block;
+    padding-bottom: 40px;
+    font-size: 25px;
+    color: rgb(62, 1, 118);
+    
+}
+.side-navbar a:hover{
+    color: rgb(97, 65, 145);;
+}
 .form {
     width: 700px;
+    height: 100px;
     padding: 20px;
     border: none; /* Removed border */
     margin-left: 280px;
@@ -93,15 +111,17 @@ nav ul li a{
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(103, 0, 103);
 }
+
 h3, p, label {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     font-weight: 600;
 }
 
 input:required, select:required, textarea:required {
     border: 1px solid black;
 }
-h3{
+
+h3 {
     font-size: small;
 }
 
@@ -113,9 +133,6 @@ input, select, textarea {
     border: 1px solid black;
     border-radius: 4px;
     box-sizing: border-box;
-}
-input ,title ,textarea{
-   padding:1px;
 }
 
 /* Styling for the submit button */
@@ -130,12 +147,13 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #45a049;
 }
+
 #anonymity {
     width: 30px; /* Adjust the width as desired */
     height: 20px; /* Adjust the height as desired */
 }
-.vertical{
-    height: 100px;
-    width: 40px;
-    background-color: purple;
+
+/* Adjusting the size of the title textarea */
+#title {
+    height: 50px; /* Adjust the height as desired */
 }
