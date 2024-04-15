@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComplaintStudent</title>
+    <link rel="stylesheet" href="student.css">
+</head>
+<body>
+    <!--<div class="container">
+         Sidebar 
+        <div class="sidebar">
+            <h3>Menu</h3>
+            <ul>
+                <li><a href="#">Edit Profile</a></li>
+                <li><a href="#">Settings and Privacy</a></li>
+                <li><a href="#">Complaint History</a></li>
+                <li><a href="#">Log out</a></li>
+            </ul>
+        </div>-->
+        <nav>
+            <img src="E:\Student\Images\user.jpg" width="100" height="100" class="user">
+        <div class="profile"></div>
+            <img src="" class="logo">
+            <ul>
+            <li><a href="#">Home</a></li>
+           <li><a href="#">About us</a></li>
+           <li><a href="#">Get Help</a></li>
+            <li><a href="#">Contact us</a></li>
+        </ul>
+        
+        <!-- <div class="sub_menu_wrap">
+                <div class="sub_menu">
+                    <divl class="info"></div>
+                        <img src="E:\PBL\user.jpg" class="info">
+                        <h3>Lorem ipsum </h3>
+                </div>
+                <hr>
+                <a href="#" class="sub_menu_link">
+                <img src="E:\PBL\images (3).png">
+                <p>Edit Profile</p>
+                <span></span>
+            </a>
+            <a href="#" class="sub_menu_link">
+                <img src="E:\PBL\images (1).png">
+                <p>Settings and Privacy</p>
+                <span></span>
+            </a>
+            <a href="#" class="sub_menu_link">
+                <img src="E:\PBL\complaint.png">
+                <p>Complaint history</p>
+                <span></span>
+            </a>
+            <a href="#" class="sub_menu_link">
+                <img src="E:\PBL\images (2).png">
+                <p>Log out</p>
+                <span></span>
+            </a>-->
+            </div>
+        </nav>
+        <form action="" class="form">
+            <h3>Required fields are allowed by *</h3>
+            <p>Select Complaint domain: *
+            <select name="Complaint type" id="domain" required>
+            <option value="" id="select">--Select a Complaint Authority--</option>
+            <option value="Academics">Academics</option>
+            <option value="Administrative">Administrative(Management)</option>
+            <option value="Canteen">Canteen</option>
+            <option value="Gym Khana">Gym Khana</option>
+            <option value="Hostel">Hostel</option>
+            <option value="Hygiene">Hygiene</option>
+            <option value="Personal">Personal</option>
+            <option value="Grievances">Grievances(Suggestions)</option>
+        </select>
+        </p>
+        <p>Title of the Complaint: *<textarea name="title" id="title" cols="10" rows="10" required></textarea></p>
+        <p>Write your Complaint: *<textarea name="Write" id="Write" cols="60" rows="10" required></textarea></p>
+        <label for="imageUpload">Choose an image to upload(If Required):</label>
+        <input type="file" id="imageUpload" name="imageUpload" accept="image/*">
+        <label for="anonymity">Keep my identity anonymous</label>
+        <input type="checkbox" id="anonymity" name="anonymity">
+        <p><input type="submit" value="Submit"></p>
+        </form>
+        <div class="vertical"></div>
+</body>
+</html>
+
