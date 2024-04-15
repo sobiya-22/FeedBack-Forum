@@ -1,0 +1,141 @@
+*{
+    padding: 0px;
+    margin:0px;
+}
+.container {
+    display: flex;
+}
+
+/* Sidebar styles */
+nav{
+    background-color: rgb(103, 1, 103);
+    width: 100%;
+    padding: right 180px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    
+
+}
+nav ul{
+    width: 100%;
+    text-align: left;
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+    padding: 18px;
+}
+nav ul li a{
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+ nav ul li a:hover{
+    color:coral;
+}
+.user{
+   border-radius: 50%;
+    cursor: pointer;
+    margin-left: 30px;
+}
+#select{
+    text-align: center;
+}
+/*.sub_menu_wrap{
+    position:absolute;
+    top: 100%;
+    right:10%;
+    width: 320px;
+}
+.sub_menu_wrap sub_menu{
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+}
+.sub_menu info{
+    display: flex;
+    align-items: center;
+}
+.sub_menu info h3{
+    font-weight: 500;
+}
+.sub_menu info img{
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.sub_menu hr{
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background: #ccc;
+    margin: 15px 0 10px;
+}*/
+.form-container {
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; 
+    font-weight: 500;
+}
+
+/* CSS for the form */
+.form {
+    width: 700px;
+    padding: 20px;
+    border: none; /* Removed border */
+    margin-left: 280px;
+    display: flexbox;
+    font-family: Arial, Helvetica, sans-serif;
+    color: rgb(103, 0, 103);
+}
+h3, p, label {
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+input:required, select:required, textarea:required {
+    border: 1px solid black;
+}
+h3{
+    font-size: small;
+}
+
+/* General input styling */
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input ,title ,textarea{
+   padding:1px;
+}
+
+/* Styling for the submit button */
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+/* Add hover effect on the submit button */
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+#anonymity {
+    width: 30px; /* Adjust the width as desired */
+    height: 20px; /* Adjust the height as desired */
+}
+.vertical{
+    height: 100px;
+    width: 40px;
+    background-color: purple;
+}
