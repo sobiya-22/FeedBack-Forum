@@ -2,13 +2,14 @@
     padding: 0px;
     margin:0px;
 }
-.container {
+.body {
     display: flex;
+    background: white;
 }
 
-/* Sidebar styles */
+/*top nav*/
 nav{
-    background-color: rgb(103, 1, 103);
+    background-color: rgb(90, 2, 117);
     width: 100%;
     padding: right 180px;
     display: flex;
@@ -32,83 +33,122 @@ nav ul li a{
     color: white;
     text-decoration: none;
     font-size: 16px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Libre Baskerville", "static";
 }
  nav ul li a:hover{
-    color:coral;
+    color:rgb(38, 0, 37);
+    text-decoration: underline;
 }
 .user{
-   border-radius: 50%;
     cursor: pointer;
-    margin-left: 30px;
+    margin-left: 0px;
 }
 #select{
     text-align: center;
 }
-/*.sub_menu_wrap{
-    position:absolute;
-    top: 100%;
-    right:10%;
-    width: 320px;
-}
-.sub_menu_wrap sub_menu{
-    background-color: white;
-    padding: 20px;
-    margin: 10px;
-}
-.sub_menu info{
-    display: flex;
-    align-items: center;
-}
-.sub_menu info h3{
-    font-weight: 500;
-}
-.sub_menu info img{
-    width: 60px;
-    border-radius: 50%;
-    margin-right: 15px;
-}
-.sub_menu hr{
-    border: 0;
-    height: 1px;
-    width: 100%;
-    background: #ccc;
-    margin: 15px 0 10px;
-}*/
-/* CSS for the form */
-.side-navbar{
+/*side nav*/
+/*.side-navbar{
     z-index: 1;
     position: fixed;
     overflow-x: hidden;
     height:600px;
     width: 250px;
-    top: 100px;
+    top: 60px;
     bottom: 100px;
     left: 0;
-    border-top: 60px;
-    border: 3px solid rgb(119, 1, 134);
     padding-top: 60px;
     margin-left: 0;
+    background-color:rgb(90, 2, 117) ;
 }
 .side-navbar a{
     text-decoration: none;
     display: block;
     padding-bottom: 40px;
     font-size: 25px;
-    color: rgb(62, 1, 118);
+    color: white;
+    padding-left: 20px;
+    background-color: rgb(90, 2, 117);
     
+}*/
+.sidepanel {
+    height: 250px; /* Specify a height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 17%;
+    left: 0;
+    background-color: #fffbfb; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+  }
+  
+  /* The sidepanel links */
+  .sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: rgb(109, 49, 164);;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidepanel a:hover {
+    color: rgb(105, 42, 164);;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidepanel .close-toggle-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* Style the button that is used to open the sidepanel */
+  .open-toggle-btn {
+    font-size: 20px;
+    cursor: pointer;
+    /* background-color: #111; */
+    color: rgb(105, 42, 164);
+    padding: 10px 15px;
+    border: none;
+  }
+  .open-toggle-btn:hover {
+    /* background-color: #f6f4f4; */
+    transition: .2s;
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px 0 rgb(109, 49, 164,0.7);
+  }
+#logout{
+    text-decoration: none;
+    display: block;
+    background-color:rgb(90, 2, 117);
+    
+    padding-bottom: 40px;
+    font-size: 25px;
+    color: white;
+    padding-left: 20px;
+
 }
 .side-navbar a:hover{
-    color: rgb(97, 65, 145);;
+    color: rgb(90, 3, 3);;
 }
+/*form*/
 .form {
     width: 700px;
-    height: 100px;
-    padding: 20px;
-    border: none; /* Removed border */
-    margin-left: 280px;
-    display: flexbox;
-    font-family: Arial, Helvetica, sans-serif;
+    height: 535px;
+    padding: 18px;
+     /* Adjust the border style as desired */
+    border: 1px solid rgb(234, 193, 234);  /* Adjust the border color and width */
+    margin-left: 380px;
+    margin-top: 10px;
+    background-color:rgb(245, 236, 255) ;
+    border-radius: 10px;
+    font-family: "Libre Baskerville", "static";
+    box-shadow: 10px 10px 25px rgba(63 , 0, 135, 0.25);
     color: rgb(103, 0, 103);
 }
 
@@ -117,43 +157,82 @@ h3, p, label {
     font-weight: 600;
 }
 
-input:required, select:required, textarea:required {
+input:required, select:required, textarea:required :hover{
     border: 1px solid black;
+    
 }
-
-h3 {
-    font-size: small;
-}
-
 /* General input styling */
+
 input, select, textarea {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid black;
-    border-radius: 4px;
+    border-radius: 10px;
     box-sizing: border-box;
 }
 
-/* Styling for the submit button */
-input[type="submit"] {
+button[type="submit"] {
+    width: 100%; /* Elongate the button to the full width */
     background-color: #4CAF50;
     color: white;
     cursor: pointer;
     border: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 16px;
 }
 
 /* Add hover effect on the submit button */
-input[type="submit"]:hover {
+button[type="submit"]:hover {
     background-color: #45a049;
 }
 
-#anonymity {
-    width: 30px; /* Adjust the width as desired */
-    height: 20px; /* Adjust the height as desired */
-}
 
-/* Adjusting the size of the title textarea */
+#anonymity {
+    width: 30px; 
+    height: 20px; 
+}
 #title {
-    height: 50px; /* Adjust the height as desired */
+    height: 50px;
+}
+.popup{
+    width:400px;
+    background: rgb(236, 217, 236);
+    border-radius: 6px;
+    position:absolute;
+    top:0;
+    left: 50%;
+    transform: translate(-50% , -50%)scale(0.1);
+    text-align: centre;
+    visibility: hidden;
+    padding: 0 30px 30px;
+    transition: 0.4s , top ,0.3s;
+}.popup img{
+    width:100px;
+    margin-top: -50%;
+    margin-left: 130px;
+    border-radius:50%; 
+    box-shadow:0 2px 5px rgba(0 , 0, 0, 0.2) ;
+}
+.popup h2{
+    padding-left: 130px;
+}
+.popup button{
+    width:100%;
+    margin-top: 50px;
+    padding: 10px ,0;
+    background: #6fdf49;
+    color: white;
+    border:0;
+    outline:none;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor:pointer;
+    box-shadow:0 5px 5px rgba(0 , 0, 0, 0.2) ;
+}
+.open-popup{
+    visibility: visible;
+    top:50%;
+    transform: translate(-50% , -50%) scale(1);
 }
