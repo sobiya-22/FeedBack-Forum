@@ -5,6 +5,7 @@
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
   import {getDatabase,set,ref,get,child} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
   import {select} from "https://cdn.jsdelivr.net/gh/RiteshBorse/testing/home.js";
+  import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-storage.js";
 import { generateRandomNumber } from "./stud-complaint.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
@@ -30,6 +31,7 @@ import { generateRandomNumber } from "./stud-complaint.js";
     await set(ref(db,`complaints/${id}`),data);
     alert('data added');
   }
+  
   async function readData() { 
     const dbRef = ref(getDatabase()); 
     const snapshot = await get(child(dbRef, 'complaints/')); 
@@ -73,16 +75,49 @@ export async function readAllEvents()
         alert('Please fill in all required fields: Complaint Type, Title, and Complaint.');
         return;
     }
+    let now = new Date();
+
+    // Format the date
+    let formattedDate = now.toLocaleDateString('en-GB', {
+        day: 'numeric', 
+        month: 'numeric', 
+        year: 'numeric'
+    });
+
+    // Combine the date and time
+   
+
     let data = {
       complaintType : complaintType.value,
-      image : image.value,
+      //image : image.value,
       anonymity: anonymity.value,
       title : title.value,
-      complaint : complaint.value
+      complaint : complaint.value,
+      date: formattedDate,
+      status: "Not resolved"
     }
+    if (image.files.length > 0) {
+      const imageFile = image.files[0];
+      const storage = getStorage();
+      const imageRef = storageRef(storage, 'images/' + imageFile.name);
+  
+      try {
+        // Upload the file to Firebase Storage
+        const snapshot = await uploadBytes(imageRef, imageFile);
+        
+        // Get the URL of the uploaded file
+        const imageUrl = await getDownloadURL(imageRef);
+        
+        // Add the image URL to the complaint data
+        data.image = imageUrl;
+      } catch (error) {
+        console.error("Error uploading image: ", error);
+      }
+    }
+  
+    // Continue with adding the complaint
     addComplaint(data);
     let events = await readAllEvents();
     console.log(events);
+    openPopup();
   });
-  
- 
