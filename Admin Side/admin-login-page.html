@@ -7,52 +7,65 @@
     <title>Admin Login Page</title>
 </head>
 <body>
-    <div class="horizontal-bar">
-        
-    </div>
-    <h1>FeedBack Forum</h1>
-    <nav>
-        <div class="side-navbar">
-            <img src="/Images/Admin-page-logo.png" alt="Logo">
-            <a href="#">All complaints</a>
-            <a href="#">Pending Complaints</a>
-            <a id="bottom-padding" href="#">Processing Complaints</a>
-            <a id="black" href="#">About Us</a>
-            <a id="black" href="#">Report Issue</a>
-        </div>
-    </nav>
-    <table style="width: 70%;" id="complaintBox">
-        <tr class="first-row">
-            <th style="width: 15%;">Complaint ID</th>
-            <th style="width: 15%;">Category</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th style="width: 15%">Actions</th>
-        </tr>
-        <tr>
-            <td>123</td>
-            <td>Mess</td>
-            <td>Food not good</td>
-            <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas placeat quaerat, officiis dolore ipsum deserunt exercitationem ea voluptatum. Quia, blanditiis!</td>
-            <td>Rector</td>
-        </tr>
-        <tr>
-            <td>345</td>
-            <td>E402</td>
-            <td>Fan not working</td>
-            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, eveniet.</td>
-            <td>Principal</td>
-        </tr>
-        <tr>
-            <td>987</td>
-            <td>College</td>
-            <td>Cleanliness</td>
-            <td>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis perspiciatis tenetur nam error temporibus aliquam possimus sint rerum, molestiae asperiores ullam porro optio perferendis consectetur cupiditate eius est aperiam tempore?</td>
-            <td>Principal</td>
-        </tr>
+    <nav class="horizontal-bar">
+        <img src="Admin-page-logo.png" alt="Feed-back logo">
+        <button class="all-js" id="all-complaints">All Complaints</button>
+        <button class="pending-js" id="pending-complaints" onclick="pendingComplaints()">Pending Complaints</button>
+        <button class="resolved-js" id="resolved-complaints" onclick="processingComplaints()">Resolved Complaints</button>
 
-    </table>
-   
+    </nav>
+    <div id="admin-profile" class="sidepanel">
+        <a href="javascript:void(0)" class="close-toggle-btn" onclick="closeNav()">&times;</a>
+        <a href="#">Edit Profile</a>
+        <a href="#">Report Issue</a>
+    </div>
+    <button class="open-toggle-btn" onclick="openNav()">&#9776;</button>
+    <main class="complaint-table">
+        <section class="page-display">
+            <h2 class="heading">All Complaints</h2>
+        </section>
+        <section class="complaints-display">
+            <table class="main-table">
+                <thead class="header">
+                    <tr>
+                        <th>Complaint ID</th>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Category</th>
+                        <th>Title</th>
+                        <!-- <th>Description</th> -->
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody class="body">
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <div class="open-authority-form">
+        <h3>Complaint Details</h3>
+        <button id="close-btn" onclick="closeAuthorityForm()">&times;</button>
+        <form action="">
+            <p class="complaint-id"></p>
+            <p class="complaint-date"></p>
+            <p class="complaint-category"></p>
+            <p class="complaint-title"></p>
+            <p class="complaint-description"></p>
+            <p class="complaint-status"></p>
+            <textarea name="authority-msg" class="msg-send" cols="33" rows="3" placeholder="Add a message"></textarea>
+            <!-- <input type="submit"> -->
+            <button class="authority-btn" id="send">Send</button>
+            <button class="authority-btn" id="discard" onclick="discardComplaint()">Discard</button>
+            </label>
+        </form>
+    </div>
 </body>
-<script src="admin-login-page.js"></script>
+<script src="index.js" ></script>
+<script type="module" src="firebaseConfig.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.11.0/firebase-app.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
 </html>
