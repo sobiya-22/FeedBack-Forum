@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
-import { getDatabase, set, ref, get, child, remove,push,update } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js"
+import { getDatabase, set, ref, get, child, remove, push, update } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -36,7 +36,8 @@ const db = getDatabase();
 let heading = document.querySelector(".complaint-table .page-display .heading");
 let eachRow = document.querySelector(".complaint-table .complaints-display .main-table .body");
 let allComplaintBtn = document.querySelector(".horizontal-bar .all-js");
-
+let pendingBtn = document.querySelector('.horizontal-bar .pending-js');
+let resolvedBtn = document.querySelector('.horizontal-bar .resolved-js');
 
 async function readAllComplaints() {
     heading.innerHTML = "All Complaints";
@@ -44,6 +45,7 @@ async function readAllComplaints() {
     const dbRef = ref(db);
     get(child(dbRef, 'complaints/'))
         .then((snapshot) => {
+            eachRow.innerHTML = '';
             snapshot.forEach((snapshot) => {
                 let complaintID = snapshot.key;
                 let complaintDate = snapshot.child('date').val();
@@ -79,6 +81,18 @@ async function readAllComplaints() {
 
 
 
+// Event listener for the table body to update the authority popup everytime the user clicks on details button
+const tableBody = document.querySelector(".complaint-table .complaints-display .main-table .body");
+tableBody.addEventListener("click", function (event) {
+    if (event.target.tagName === "BUTTON") {
+        const row = event.target.closest("tr");
+        if (row) {
+            let complaintID = row.querySelector("td:first-child").textContent;
+            authorityPopUp(complaintID);
+        }
+    }
+});
+
 function authorityPopUp(complaintID) {
     let popUpDisplay = document.querySelector(".open-authority-form")
     popUpDisplay.style.display = "flex";
@@ -90,51 +104,41 @@ function authorityPopUp(complaintID) {
     let DescriptionElement = document.querySelector(".open-authority-form .complaint-description");
     let complaintStatusElement = document.querySelector(".open-authority-form .complaint-status");
 
-    let complaintDate, complaintCategory, complaintTitle, complaintDescription,complaintStatus;
+    let complaintDate, complaintCategory, complaintTitle, complaintDescription, complaintStatus;
 
-    const tableBody = document.querySelector(".complaint-table .complaints-display .main-table .body");
-    tableBody.addEventListener("click", function (event) {
-        if (event.target.tagName === "BUTTON") {
-            const row = event.target.closest("t r");
-            if (row) {
-                complaintID = row.querySelector("td:first-child").textContent;
-                CID.innerHTML = `<strong>Complaint ID: </strong>${complaintID}<br>`;
-            }
-            // const db = getDatabase();
-            const dbRef = ref(db);
-            get(child(dbRef, 'complaints/'))
-                .then(async (snapshot) => {
+    // const db = getDatabase();
+    const dbRef = ref(db);
+    get(child(dbRef, 'complaints/'))
+        .then(async (snapshot) => {
 
-                    snapshot.forEach((element) => {
+            snapshot.forEach((element) => {
+                if (element.key === complaintID) {
+                    complaintDate = element.child('date').val();
+                    complaintCategory = element.child('complaintType').val();
+                    complaintTitle = element.child('title').val();
+                    complaintDescription = element.child('complaint').val();
+                    complaintStatus = element.child('status').val();
 
-                        if (element.key === complaintID) {
+                    CID.innerHTML = `<strong>Complaint ID: </strong>${complaintID}<br>`;
+                    DateElement.innerHTML = `<strong>Date: </strong>${complaintDate}<br>`;
+                    CategoryElement.innerHTML = `<strong>Category: </strong>${complaintCategory}<br>`;
+                    TitleElement.innerHTML = `<strong>Title: </strong>${complaintTitle}<br>`;
+                    DescriptionElement.innerHTML = `<strong>Description: </strong>${complaintDescription}<br>`;
+                    complaintStatusElement.innerHTML = `<strong>Status: </strong>${complaintStatus}<br>`;
+                }
+            });
+        });
 
-                            complaintDate = element.child('date').val();
-                            complaintCategory = element.child('complaintType').val();
-                            complaintTitle = element.child('title').val();
-                            complaintDescription = element.child('complaint').val();
-                            complaintStatus = element.child('status').val();
-
-                            DateElement.innerHTML = `<strong>Date: </strong>${complaintDate}<br>`;
-                            CategoryElement.innerHTML = `<strong>Category: </strong>${complaintCategory}<br>`;
-                            TitleElement.innerHTML = `<strong>Title: </strong>${complaintTitle}<br>`;
-                            DescriptionElement.innerHTML = `<strong>Description: </strong>${complaintDescription}<br>`;
-                            complaintStatusElement.innerHTML = `<strong>Status: </strong>${complaintStatus}<br>`;
-                        }
-
-                    });
-                });
-        }
-    });
     let discardBtn = popUpDisplay.querySelector('#discard');
     discardBtn.addEventListener('click', () =>
         discardComplaint(complaintID));
-    
+
     let sendBtn = popUpDisplay.querySelector('#send');
     sendBtn.addEventListener('click', () => {
         sendMessageToAuthority(complaintID, complaintCategory);
     });
 }
+
 function sendMessageToAuthority(complaintID, complaintCategory) {
     alert("ComplaintID: " + complaintID + " sent to " + complaintCategory);
 
@@ -147,16 +151,16 @@ function sendMessageToAuthority(complaintID, complaintCategory) {
     // alert(adminMessageValue);
 
     // Update the status in Firebase- setting to in progress
-    
+
     update(complaintRef, {
-        status: 'In Progress',
+        status: 'pending',
         adminNote: adminMessageValue
     }).then(() => {
         console.log("Status updated successfully.");
     }).catch((error) => {
         console.error("Error updating status:", error);
     });
-    
+
     complaintStatus = element.child('status').val();
     let complaintStatusElement = document.querySelector(".open-authority-form .complaint-status");
     complaintStatusElement.innerHTML = `<strong>Status: </strong>${complaintStatus}<br>`;
@@ -175,7 +179,102 @@ function discardComplaint(complaintID) {
             console.error("Error removing data:", error);
         });
 }
+
+async function readPendingResolvedEvents(statusType) {
+    if (statusType === 'pending') {
+        heading.innerHTML = 'Pending Complaints';
+        const dbRef = ref(db);
+        get(child(dbRef, 'complaints/'))
+            .then((snapshot) => {
+                eachRow.innerHTML = '';
+                console.log(snapshot.child('status').val());
+                snapshot.forEach((snapshot) => {
+
+                    if (snapshot.child('status').val() === statusType) {
+                        let complaintID = snapshot.key;
+                        let complaintDate = snapshot.child('date').val();
+                        let complaintCategory = snapshot.child('complaintType').val();
+                        let complaintTitle = snapshot.child('title').val();
+                        let rowdata = `<tr>
+                        <td>${complaintID}</td>
+                        <td>${complaintDate}</td>
+                        <td>Arundhati Sar...</td>
+                        <td>Emails</td>
+                        <td>${complaintCategory}</td>
+                        <td>${complaintTitle}</td>
+                        <td><button class="status-btn" id="pending-btn">Pending</button></td>
+                    </tr>`;
+                        eachRow.innerHTML += rowdata;
+
+                        // Get all the buttons
+                        const buttons = document.querySelectorAll(".status-btn");
+                        // Add event listener to each button
+                        buttons.forEach((button) => {
+                            button.addEventListener("click", () => {
+                                authorityPopUp(complaintID);
+                                document.querySelector(".open-authority-form").style.display = "flex";
+                            });
+                        });
+                    }
+                })
+
+            })
+            .catch((error) => {
+                console.error("Error reading data:", error);
+            });
+
+    }
+    else if (statusType === 'resolved') {
+        heading.innerHTML = 'Resolved Complaints';
+        const dbRef = ref(db);
+        get(child(dbRef, 'complaints/'))
+            .then((snapshot) => {
+                eachRow.innerHTML = '';
+                snapshot.forEach((snapshot) => {
+
+                    if (snapshot.child('status').val() === statusType) {
+                        let complaintID = snapshot.key;
+                        let complaintDate = snapshot.child('date').val();
+                        let complaintCategory = snapshot.child('complaintType').val();
+                        let complaintTitle = snapshot.child('title').val();
+                        let rowdata = `<tr>
+                        <td>${complaintID}</td>
+                        <td>${complaintDate}</td>
+                        <td>Arundhati Sar...</td>
+                        <td>Emails</td>
+                        <td>${complaintCategory}</td>
+                        <td>${complaintTitle}</td>
+                        <td><button class="status-btn" id="pending-btn">Pending</button></td>
+                    </tr>`;
+                        eachRow.innerHTML += rowdata;
+
+                        // Get all the buttons
+                        const buttons = document.querySelectorAll(".status-btn");
+                        // Add event listener to each button
+                        buttons.forEach((button) => {
+                            button.addEventListener("click", () => {
+                                authorityPopUp(complaintID);
+                                document.querySelector(".open-authority-form").style.display = "flex";
+                            });
+                        });
+                    }
+                })
+
+            })
+            .catch((error) => {
+                console.error("Error reading data:", error);
+            });
+    }
+}
+
 allComplaintBtn.addEventListener('click', async () => {
     await readAllComplaints();
+})
+
+pendingBtn.addEventListener('click', async () => {
+    await readPendingResolvedEvents('pending');
+})
+resolvedBtn.addEventListener('click', async () => {
+    await readPendingResolvedEvents('resolved');
 })
 
