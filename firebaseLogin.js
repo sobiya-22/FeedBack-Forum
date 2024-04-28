@@ -20,7 +20,7 @@
 
 export function auth(){
   if(JSON.parse(sessionStorage.getItem("getUser")) == null){
-      window.location.href = 'login-page.html';
+      window.location.href = 'index.html';
   } 
 }
   // Initialize Firebase
