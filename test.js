@@ -1,3 +1,3 @@
-import { auth } from "./firebase.js";
+import { auth } from "./firebaseLogin.js";
 
 auth();
