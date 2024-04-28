@@ -55,7 +55,7 @@ async function readAllComplaints() {
                 let rowdata = `<tr>
                     <td>${complaintID}</td>
                     <td>${complaintDate}</td>
-                    <td>Arundhati Sar...</td>
+                    <td>James Bernard</td>
                     <td>Emails</td>
                     <td>${complaintCategory}</td>
                     <td>${complaintTitle}</td>
@@ -198,7 +198,7 @@ async function readPendingResolvedEvents(statusType) {
                         let rowdata = `<tr>
                         <td>${complaintID}</td>
                         <td>${complaintDate}</td>
-                        <td>Arundhati Sar...</td>
+                        <td>James Bernard</td>
                         <td>Emails</td>
                         <td>${complaintCategory}</td>
                         <td>${complaintTitle}</td>
@@ -240,7 +240,7 @@ async function readPendingResolvedEvents(statusType) {
                         let rowdata = `<tr>
                         <td>${complaintID}</td>
                         <td>${complaintDate}</td>
-                        <td>Arundhati Sar...</td>
+                        <td>James Bernard</td>
                         <td>Emails</td>
                         <td>${complaintCategory}</td>
                         <td>${complaintTitle}</td>
