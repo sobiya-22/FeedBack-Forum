@@ -10,7 +10,7 @@ document.querySelector('.login-s-btn')
     if(getUser.crn == crn.value && getUser.password == password.value) {
       let data = sessionStorage.setItem("getUser" , JSON.stringify(getUser));
       alert('login success');
-      window.location.href = 'test.html';
+      window.location.href = 'Student%20Side/Student-complaint-page.html';
       
 
     }
