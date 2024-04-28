@@ -1,0 +1,316 @@
+*{
+    font-family: "Libre Baskerville", "static";
+}
+body{
+    align-content: center;
+    display: block;
+    margin: 0;
+}
+.horizontal-bar{
+    background-color: rgb(236, 220, 250);
+    position: relative;
+}
+.horizontal-bar button{
+    position: absolute;
+    top: 25%;
+    font-size: 16px;
+    font-family:Cabin;
+    color: white;
+    padding: 20px;
+    border-radius: 2rem;
+    border: none;
+    background-color: rgb(109, 49, 164);
+}
+.horizontal-bar button:hover{
+    box-shadow: 0 8px 16px 0 rgb(109, 49, 164,0.7);
+    transition: .2s;
+    transform: scale(1.02);
+}
+.horizontal-bar #all-complaints{
+    left: 53.5%;
+}
+.horizontal-bar #pending-complaints{
+    left: 65%;
+}
+.horizontal-bar #resolved-complaints{
+    left: 79%;
+}
+.horizontal-bar img{
+    height: 5%;
+    width: 25%;
+    margin: 0;
+}
+.sidepanel {
+    height: 250px; /* Specify a height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 17%;
+    left: 0;
+    background-color: #fffbfb; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+  }
+  
+  /* The sidepanel links */
+  .sidepanel a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    color: rgb(109, 49, 164);;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* When you mouse over the navigation links, change their color */
+  .sidepanel a:hover {
+    color: rgb(105, 42, 164);;
+  }
+  
+  /* Position and style the close button (top right corner) */
+  .sidepanel .close-toggle-btn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+  /* Style the button that is used to open the sidepanel */
+  .open-toggle-btn {
+    font-size: 20px;
+    cursor: pointer;
+    /* background-color: #111; */
+    color: rgb(105, 42, 164);
+    padding: 10px 15px;
+    border: none;
+  }
+  .open-toggle-btn:hover {
+    /* background-color: #f6f4f4; */
+    transition: .2s;
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px 0 rgb(109, 49, 164,0.7);
+  }
+.complaint-table{
+    width: 80vw;
+    height: 38vw;
+    background-color:rgb(214, 179, 246);
+    box-shadow: 0 0.4rem 0.8rem rgb(89, 40, 135);
+    border-radius: 0.8rem;
+    position: absolute;
+    left: 13%;
+    top: 20%;
+}
+/* .complaints-display{
+    position: absolute;
+    left: 5%;
+} */
+.page-display{
+    position: sticky;
+    background-color: rgb(236, 220, 250);
+    top: 0;
+    height: 10%;
+    padding: 1rem;
+    margin-bottom: 10px;
+
+}
+.page-display h2{
+    color: rgb(89, 40, 135);
+}
+.complaints-display{
+    width: 95%;
+    margin: 1rem auto;
+    border-radius: 0.8rem;
+    max-height: calc(79% - 0.8rem);
+    overflow: auto;
+    background-color:rgb(236, 220, 250) ;
+    box-shadow: 0 0.3rem 0.5rem rgb(89, 40, 135);
+    border-radius: 0.8rem;
+}
+
+table{
+    width: 100%;
+}
+table, th, td {
+    font-size: 1rem;
+    color: rgb(89, 40, 135);
+    padding: 20px;
+    text-align: center;
+    border-collapse: collapse;
+}
+th{
+    overflow-x: hidden;
+    top: 0;
+    left: 0;
+    background-color:rgb(200, 163, 237) ;
+    height: 20px;
+}
+thead{
+    position: sticky;
+    overflow-x: hidden;
+}
+.body tr:nth-child(even){
+    background-color: rgb(230, 208, 249);
+}
+.body tr:hover{
+    background-color: rgb(225, 194, 251);
+}
+.status-btn{
+    font-size: 16px;
+    font-family:Cabin;
+    color: white;
+    padding: 10px;
+    border-radius: 2rem;
+    border: none;
+    background-color: rgb(109, 49, 164);
+}
+.status-btn:hover{
+    box-shadow: 0 8px 16px 0 rgb(109, 49, 164,0.7);
+    transition: .2s;
+    transform: scale(1.02);
+}
+.open-authority-form{
+    width: 27%;
+    height: 65%;
+    background-color: rgba(248, 246, 249, 0.8);
+    color: rgb(75, 34, 112);
+    position: absolute;
+    top: 20%;
+    left: 37%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-radius: 17px;
+    position: relative;
+    display: none;
+}
+.open-authority-form h3{
+    position: absolute;
+    left: 30%;
+    margin-bottom: 20px;
+}
+.open-authority-form form{
+    margin-top: 50px;
+}
+.open-authority-form textarea{
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1px solid rgb(109, 49, 164);
+    border-radius: 10px;
+    background-color: #ebe8eb;
+    font-size: 16px;
+    resize: none;
+    position: relative;
+    margin-bottom: 70px;
+}
+.open-authority-form select {
+    width: 100%;
+    padding: 10px 8px;
+    border: 1px solid rgb(109, 49, 164);
+    border-radius: 7px;
+    background-color: #ebe8eb;
+  }
+/* .open-authority-form input[type=submit]{
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color:rgb(109, 49, 164);
+    border-radius: 25px;
+    margin: 20px;
+    position: absolute;
+    left: 28%;
+    bottom: 1px;
+}
+.open-authority-form input[type=submit]:focus{
+    background-color: rgb(94, 11, 167);;
+    box-shadow: 1px 5px 2px 2px rgb(210, 181, 237);
+} */
+.open-authority-form .authority-btn{
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    
+    border-radius: 25px;
+    margin: 20px;
+    position: absolute;
+    left: 35%;
+    bottom: 0;
+}
+.open-authority-form #send{
+    left: 15%;
+    background-color:rgb(62, 193, 108);
+}
+.open-authority-form #send:hover{
+    /* box-shadow: 0 8px 16px 0 rgb(49, 158, 87); */
+    transition: .2s;
+    transform: scale(1.02);
+    background-color: rgb(2, 99, 2);
+}
+.open-authority-form #discard{
+    left: 50%;
+    background-color:rgb(237, 56, 56);
+}
+.open-authority-form #discard:hover{
+    transition: .2s;
+    transform: scale(1.02);
+    background-color:rgb(181, 6, 6);
+}
+.open-authority-form #close-btn{
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 60px;
+    color:  rgb(94, 11, 167);
+    border: none;
+    background-color: rgba(248, 246, 249, 0.8);;
+}
+.pending-processing-complaints{
+    font-size: 16px;
+    font-family:Cabin;
+    color: white;
+    padding: 20px;
+    border-radius: 2rem;
+    border: none;
+}
+#pending-btn{
+    background-color: rgb(232, 67, 67);
+}
+#processing-btn{
+    background-color: rgb(177, 74, 22);
+}
+/* .open-authority-form img{
+    height: 90px;
+    width: 90px;
+    padding: 3px;
+    background-color: rgba(248, 246, 249, 0.8);;;
+    border-radius: 50%;
+    border: 1.2px solid  rgb(94, 11, 167);;
+    position: absolute;
+    left: 38%;
+    top: -13%;
+} */
+
+/* .body::-webkit-scrollbar {
+    width: 0.2rem;
+    height: 0.2rem;
+    display: none;
+}
+
+.body::-webkit-scrollbar-thumb {
+    border-radius: 0.5rem;
+    background-color: #0004;
+    visibility: hidden;
+}
+
+.body:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+} */
