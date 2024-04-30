@@ -4,7 +4,7 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
   import {getDatabase,set,ref,get,child} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
-  import {select} from "https://cdn.jsdelivr.net/gh/RiteshBorse/testing/home.js";
+  // import {select} from "https://cdn.jsdelivr.net/gh/RiteshBorse/testing/home.js";
   import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-storage.js";
 import { generateRandomNumber } from "./stud-complaint.js";
   // TODO: Add SDKs for Firebase products that you want to use
