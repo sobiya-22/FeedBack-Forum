@@ -3,25 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="admin.css">
     <link rel="stylesheet"
         href="https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
-    <title>Admin Login Page</title>
+        <link rel="stylesheet" href="authority.css">
+    <title>Authority-LoginPage</title>
 </head>
 <body>
     <nav class="horizontal-bar">
         <img src="/Images/website-logo-transBG.png" alt="Feed-back logo">
-        <button class="all-js" id="all-complaints">All Complaints</button>
-        <button class="pending-js" id="pending-complaints">Pending Complaints</button>
-        <button class="resolved-js" id="resolved-complaints">Resolved Complaints</button>
-
+        <p class="authority-name">Authority</p>
     </nav>
     <div id="admin-profile" class="sidepanel">
         <a href="javascript:void(0)" class="close-toggle-btn" onclick="closeNav()">&times;</a>
@@ -31,6 +26,7 @@
         <a href="#"><i class="fi fi-br-exit"></i>Logout</a>
     </div>
     <button class="open-toggle-btn" onclick="openNav()">&#9776;</button>
+
     <main class="complaint-table">
         <section class="page-display">
             <h2 class="heading">All Complaints</h2>
@@ -43,9 +39,10 @@
                         <th>Date</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Category</th>
+                        <!-- <th>Category</th> -->
                         <th>Title</th>
                         <!-- <th>Description</th> -->
+                        <th>Admin Note</th>
                         <th>Details</th>
                     </tr>
                 </thead>
@@ -58,25 +55,21 @@
         <h3>Complaint Details</h3>
         <button id="close-btn" onclick="closeAuthorityForm()">&times;</button>
         <form action="">
-            <p class="complaint-id"></p>
-            <p class="complaint-date"></p>
-            <p class="complaint-category"></p>
-            <p class="complaint-title"></p>
-            <p class="complaint-description"></p>
-            <p class="complaint-status"></p>
-            <textarea name="authority-msg" class="msg-send" cols="33" rows="3" placeholder="Add a message"></textarea>
+            <p class="complaint-id">ID</p>
+            <p class="complaint-date">Date</p>
+            <!-- <p class="complaint-category"></p> -->
+            <p class="complaint-title">Title</p>
+            <p class="complaint-description">Description</p>
+            <p class="Admin Note">AdminNote</p>
+            <p class="complaint-status">Status</p>
+            <!-- <textarea name="authority-msg" class="msg-send" cols="33" rows="3" placeholder="Add a message"></textarea> -->
             <!-- <input type="submit"> -->
-            <button class="authority-btn" id="send">Send</button>
-            <button class="authority-btn" id="discard" onclick="discardComplaint()">Discard</button>
+            <button class="authority-btn" id="send">Resolve</button>
+            <!-- <button class="authority-btn" id="discard" onclick="discardComplaint()">Discard</button> -->
             </label>
         </form>
     </div>
 </body>
-<script src="/Admin Side/admin-login-page.js" ></script>
-<script type="module" src="/Admin Side/firebaseConfig.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.11.0/firebase-app.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
+
+
 </html>

@@ -1,74 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ComplaintStudent</title>
     <link rel="stylesheet" href="Student-complaint-styling.css">
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-    <link rel="stylesheet" href="https://www.flaticon.com/free-icon/accept_4315445?term=tick&page=1&position=7&origin=tag&related_id=4315445">
+    <link rel="stylesheet"
+        href="https://www.flaticon.com/free-icon/accept_4315445?term=tick&page=1&position=7&origin=tag&related_id=4315445">
 </head>
+
 <body>
-      <!--<nav class="side">
+    <!--<nav class="side">
             <div class="side-navbar">
                 <a href="#">Edit profile</a>
                 <a id="bottom-padding" href="#">Complaint History</a>
                 <a id="black" href="#">Log out</a>
             </div>
         </nav>-->
-        
-        <nav>
-            <!-- <img src="E:\Student-Side-Things\Images\Admin-page-logo.png" width="240" ,heihgt="130" class="user">-->
-            <div id="admin-profile" class="sidepanel">
-                <a href="javascript:void(0)" class="close-toggle-btn" onclick="closeNav()">&times;</a>
-                <a href="#"><i class="fas fa-user-edit"></i>Edit Profile</a>
-                <a href="#"><i class="fa-solid fa-box-tissue"></i></i>Report Issue</a>
-                <a href="#"><i class="fas fa-history"></i> Complaint History</a>
-                <a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a>
-            </div>
-            <button class="open-toggle-btn" onclick="openNav()">&#9776;</button>
-            <div class="profile"></div>
-            <img src="" class="logo">
-            <ul>
+
+    <nav>
+        <!-- <img src="E:\Student-Side-Things\Images\Admin-page-logo.png" width="240" ,heihgt="130" class="user">-->
+        <div id="admin-profile" class="sidepanel">
+            <a href="javascript:void(0)" class="close-toggle-btn" onclick="closeNav()">&times;</a>
+            <a href="#"><i class="fas fa-user-edit"></i>Edit Profile</a>
+            <a href="#"><i class="fa-solid fa-box-tissue"></i></i>Report Issue</a>
+            <a href="#"><i class="fas fa-history"></i> Complaint History</a>
+            <a href="#"><i class="fas fa-sign-out-alt"></i>Logout</a>
+        </div>
+        <button class="open-toggle-btn" onclick="openNav()">&#9776;</button>
+        <div class="profile"></div>
+        <img src="" class="logo">
+        <ul>
             <li><a href="#">Home</a></li>
-           <li><a href="#">About us</a></li>
-           <li><a href="#">Get Help</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Get Help</a></li>
             <li><a href="#">Contact us</a></li>
         </ul>
-            </div>
-        </nav>
-        <div  class="form">
-            <p>Select Complaint domain: *
+        </div>
+    </nav>
+    <div class="form">
+        <p>Select Complaint domain: *
             <select name="Complaint type" id="domain" class="js-type" required>
-            <option value="" id="select">--Select a Complaint Authority--</option>
-            <option value="Academics">Academics</option>
-            <option value="Administrative">Administrative(Management)</option>
-            <option value="Canteen">Canteen</option>
-            <option value="Gym Khana">Gym Khana</option>
-            <option value="Hostel">Hostel</option>
-            <option value="Hygiene">Hygiene</option>
-            <option value="Personal">Personal</option>
-            <option value="Grievances">Grievances(Suggestions)</option>
-        </select>
+                <option value="" id="select">--Select a Complaint Authority--</option>
+                <option value="Academics">Academics</option>
+                <option value="Administrative">Administrative(Management)</option>
+                <option value="Canteen">Canteen</option>
+                <option value="Gym Khana">Gym Khana</option>
+                <option value="Hostel">Hostel</option>
+                <option value="Hygiene">Hygiene</option>
+                <option value="Personal">Personal</option>
+                <option value="Grievances">Grievances(Suggestions)</option>
+            </select>
         </p>
-        <p>Title of the Complaint: *<textarea class="js-title-complaint" name="title" id="title" cols="10" rows="10" required></textarea></p>
-        <p>Write your Complaint: *<textarea class="js-complaint" name="Write" id="Write" cols="60" rows="10" minlength="200"></textarea>
-        <label for="imageUpload">Choose an image to upload(If Required):</label>
-        <input type="file" class="js-image" id="imageUpload" name="imageUpload" accept="image/*">
-        <label for="anonymity">Keep my identity anonymous</label>
-        <input type="checkbox" class="js-anonymity" id="anonymity" name="anonymity">
-        <p><button class="js-submit" type="submit"  required>Submit</button></p>
+        <p>Title of the Complaint: *<textarea class="js-title-complaint" name="title" id="title" cols="10" rows="10"
+                required></textarea></p>
+        <p>Write your Complaint: *<textarea class="js-complaint" name="Write" id="Write" cols="60" rows="10"
+                minlength="200"></textarea>
+            <label for="imageUpload">Choose an image to upload(If Required):</label>
+            <input type="file" class="js-image" id="imageUpload" name="imageUpload" accept="image/*">
+            <label for="anonymity">Keep my identity anonymous</label>
+            <input type="checkbox" class="js-anonymity" id="anonymity" name="anonymity">
+        <p><button class="js-submit" type="submit" required>Submit</button></p>
         <div class="popup" id="popup" aria-required="true">
             <img src="/Images/finaltick.png" alt="">
             <h2>Thank You!</h2>
             <h3>Your complaint has been successfully submitted!</h3>
-            <button id="oKButton" type="button" onclick="closePopup()" >Okay</button>           
+            <button id="oKButton" type="button" onclick="closePopup()">Okay</button>
         </div>
     </div>
-    </body>
-     
-    <!-- const popup = document.getElementById("popup");
+</body>
+
+<!-- const popup = document.getElementById("popup");
             
             function openPopup() {
                 popup.classList.add("open-popup");
@@ -77,36 +83,38 @@
             function closePopup() {
                 popup.classList.remove("open-popup");
             }-->
-    
-           
-          <script>
-                    function openNav() {
-            document.getElementById("admin-profile").style.width = "250px";
-        }
 
-            /* Set the width of the sidebar to 0 (hide it) */
-        function closeNav() {
-            document.getElementById("admin-profile").style.width = "0";
-        }
 
-        const popup = document.getElementById("popup");
-            
-            function openPopup() {
-                popup.classList.add("open-popup");
-            }
-            
-            function closePopup() {
-    let popup = document.getElementById("popup");
-    popup.style.display = "none";
-}
+<script>
+    function openNav() {
+        document.getElementById("admin-profile").style.width = "250px";
+    }
 
-            let okButton = document.getElementById('okButton');
+    /* Set the width of the sidebar to 0 (hide it) */
+    function closeNav() {
+        document.getElementById("admin-profile").style.width = "0";
+    }
 
-            okButton.addEventListener('click', function() {
-    closePopup();
-    location.reload();
-});
+    const popup = document.getElementById("popup");
 
-           </script>
-           <script src="firebaseConfig-student.js" type="module"></script>
+    function openPopup() {
+        popup.classList.add("open-popup");
+    }
+
+    function closePopup() {
+        let popup = document.getElementById("popup");
+        popup.style.display = "none";
+    }
+
+    let okButton = document.getElementById('okButton');
+
+    okButton.addEventListener('click', function () {
+        closePopup();
+        location.reload();
+    });
+
+</script>
+<script src="firebaseConfig-student.js" type="module"></script>
+<script src="test.js" type="module"></script>
+
 </html>

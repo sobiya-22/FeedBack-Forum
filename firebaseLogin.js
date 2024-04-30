@@ -3,7 +3,8 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
   import { getDatabase , set , ref , child , get } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
-  // TODO: Add SDKs for Firebase products that you want to use
+  // import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";  
+// TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
   // Your web app's Firebase configuration
@@ -19,7 +20,7 @@
   };
 
 export function auth(){
-  if(JSON.parse(sessionStorage.getItem("getUser")) == null){
+  if(JSON.parse(sessionStorage.getItem("getUser")) == null || JSON.parse(sessionStorage.getItem("getAdmin"))==NULL){
       window.location.href = 'index.html';
   } 
 }
@@ -46,4 +47,29 @@ export async function readUser(newUser) {
       return '';
   }
 };
+
+export async function readAdmin(newUser) {
+  const dbRef = ref(getDatabase());
+  const snapshot = await get(child(dbRef, `admin/${newUser}`));
+  if (snapshot.exists()) {
+      return snapshot.val();
+  }
+  else {
+      return '';
+  }
+};
+
+
+// const auth = getAuth();
+// createUserWithEmailAndPassword(auth, email, password)
+//   .then((userCredential) => {
+//     // Signed up 
+//     const user = userCredential.user;
+//     // ...
+//   })
+//   .catch((error) => {
+//     const errorCode = error.code;
+//     const errorMessage = error.message;
+//     // ..
+//   });
 
