@@ -1,7 +1,7 @@
 
     /* Add this CSS for the typing animation */
     .typing h1 {
-        text-align: center;
+       
         white-space: nowrap;
         overflow: hidden;    
         font-size:70px;
@@ -29,8 +29,9 @@
       }
     
       .container {
+        width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         padding: 0px 10px;
       }
@@ -53,9 +54,9 @@
         color: black;
       }
       .header {
-        padding: 60px;
         text-align: center;
-        flex-grow: 1;
+        width: 50%;
+        height: 100%;
       }
       .header h1 {
         color: rgb(70, 3, 101);

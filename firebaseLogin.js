@@ -33,8 +33,8 @@ export function auth(){
     await set(ref(db, 'users/' + crn), newUser);
 };
 
-export async function writeAdminData(name, newUser) {
-  await set(ref(db, 'admin/' + name), newUser);
+export async function writeAdminData(email, newUser) {
+  await set(ref(db, 'admin/' + email), newUser);
 };
 
 export async function readUser(newUser) {
