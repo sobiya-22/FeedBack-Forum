@@ -26,6 +26,9 @@ nav img{
   place-items: center;
   position: relative;
 }
+.signup-page p{
+  color: rgb(63, 0, 135);
+}
 .sign-std-page , .sign-ad-page{
   display:flex;
   align-items: center;
@@ -95,6 +98,10 @@ nav img{
   outline : none;
   border : none ;
   background-color: rgb(223, 199, 251);
+}
+.js-category{
+  width: 230px;
+  color : rgb(63,0,135);
 }
 .admin-hidden{
   visibility: hidden;

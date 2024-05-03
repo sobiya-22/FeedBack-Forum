@@ -49,14 +49,14 @@ async function readAllComplaints() {
             snapshot.forEach((snapshot) => {
                 let complaintID = snapshot.key;
                 let complaintDate = snapshot.child('date').val();
+                let complaintEmail = snapshot.child('email').val();
                 let complaintCategory = snapshot.child('complaintType').val();
                 let complaintTitle = snapshot.child('title').val();
                 // let complaintDescription = snapshot.child('complaint').val();
                 let rowdata = `<tr>
                     <td>${complaintID}</td>
                     <td>${complaintDate}</td>
-                    <td>James Bernard</td>
-                    <td>Emails</td>
+                    <td>${complaintEmail}</td>
                     <td>${complaintCategory}</td>
                     <td>${complaintTitle}</td>
                     <td><button class="status-btn">View Details</button></td>
@@ -99,12 +99,13 @@ function authorityPopUp(complaintID) {
 
     let CID = document.querySelector(".open-authority-form .complaint-id");
     let DateElement = document.querySelector(".open-authority-form .complaint-date");
+    // let EmailElement = document.querySelector(".open-authority-form .complaint-email");
     let CategoryElement = document.querySelector(".open-authority-form .complaint-category")
     let TitleElement = document.querySelector(".open-authority-form .complaint-title");
     let DescriptionElement = document.querySelector(".open-authority-form .complaint-description");
     let complaintStatusElement = document.querySelector(".open-authority-form .complaint-status");
 
-    let complaintDate, complaintCategory, complaintTitle, complaintDescription, complaintStatus;
+    let complaintDate, complaintEmail, complaintCategory, complaintTitle, complaintDescription, complaintStatus;
 
     // const db = getDatabase();
     const dbRef = ref(db);
@@ -114,6 +115,7 @@ function authorityPopUp(complaintID) {
             snapshot.forEach((element) => {
                 if (element.key === complaintID) {
                     complaintDate = element.child('date').val();
+                    complaintEmail = element.child('email').val();
                     complaintCategory = element.child('complaintType').val();
                     complaintTitle = element.child('title').val();
                     complaintDescription = element.child('complaint').val();
@@ -121,6 +123,7 @@ function authorityPopUp(complaintID) {
 
                     CID.innerHTML = `<strong>Complaint ID: </strong>${complaintID}<br>`;
                     DateElement.innerHTML = `<strong>Date: </strong>${complaintDate}<br>`;
+                    // EmailElement.innerHTML = `<strong>: </strong>${complaintEmail}<br>`;
                     CategoryElement.innerHTML = `<strong>Category: </strong>${complaintCategory}<br>`;
                     TitleElement.innerHTML = `<strong>Title: </strong>${complaintTitle}<br>`;
                     DescriptionElement.innerHTML = `<strong>Description: </strong>${complaintDescription}<br>`;
@@ -129,14 +132,19 @@ function authorityPopUp(complaintID) {
             });
         });
 
-    let discardBtn = popUpDisplay.querySelector('#discard');
-    discardBtn.addEventListener('click', () =>
-        discardComplaint(complaintID));
-
-    let sendBtn = popUpDisplay.querySelector('#send');
-    sendBtn.addEventListener('click', () => {
-        sendMessageToAuthority(complaintID, complaintCategory);
-    });
+        let discardBtn = popUpDisplay.querySelector('#discard');
+        let sendBtn = popUpDisplay.querySelector('#send');
+        
+        // Remove all previous event listeners
+        let newDiscardBtn = discardBtn.cloneNode(true);
+        let newSendBtn = sendBtn.cloneNode(true);
+        discardBtn.parentNode.replaceChild(newDiscardBtn, discardBtn);
+        sendBtn.parentNode.replaceChild(newSendBtn, sendBtn);
+        
+        // Add new event listeners
+        newDiscardBtn.addEventListener('click', () => discardComplaint(complaintID));
+        newSendBtn.addEventListener('click', () => sendMessageToAuthority(complaintID, complaintCategory));
+        
 }
 
 function sendMessageToAuthority(complaintID, complaintCategory) {
@@ -168,7 +176,6 @@ function sendMessageToAuthority(complaintID, complaintCategory) {
 
 function discardComplaint(complaintID) {
     alert("Deleting Complaint with ComplaintID: " + complaintID);
-    // const db = getDatabase();
     const dataToRemove = ref(db, 'complaints/' + complaintID);
 
     remove(dataToRemove)
@@ -193,13 +200,13 @@ async function readPendingResolvedEvents(statusType) {
                     if (snapshot.child('status').val() === statusType) {
                         let complaintID = snapshot.key;
                         let complaintDate = snapshot.child('date').val();
+                        let complaintEmail = snapshot.child('email').val();
                         let complaintCategory = snapshot.child('complaintType').val();
                         let complaintTitle = snapshot.child('title').val();
                         let rowdata = `<tr>
                         <td>${complaintID}</td>
                         <td>${complaintDate}</td>
-                        <td>James Bernard</td>
-                        <td>Emails</td>
+                        <td>${complaintEmail}</td>
                         <td>${complaintCategory}</td>
                         <td>${complaintTitle}</td>
                         <td><button class="status-btn" id="pending-btn">Pending</button></td>
@@ -240,7 +247,6 @@ async function readPendingResolvedEvents(statusType) {
                         let rowdata = `<tr>
                         <td>${complaintID}</td>
                         <td>${complaintDate}</td>
-                        <td>James Bernard</td>
                         <td>Emails</td>
                         <td>${complaintCategory}</td>
                         <td>${complaintTitle}</td>
