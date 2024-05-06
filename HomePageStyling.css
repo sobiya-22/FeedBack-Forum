@@ -1,4 +1,6 @@
-
+*{
+  font-family:"Libre Baskerville", "static" ;
+}
     /* Add this CSS for the typing animation */
     .typing h1 {
        
@@ -121,7 +123,9 @@
     border-radius: 5px;
    margin-left: 250px;
   }
-  
+  .read-more:hover{
+    background-color: #2a0132;
+  }
   #about-us img {
     width: 80%;
     height: 200px;

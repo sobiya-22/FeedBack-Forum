@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frequently Asked Questions</title>
+    <link rel="stylesheet" href="FAQStyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="navbar">
+        <img src="\Images\Admin-page-logo.png" height="50px" alt="" style="margin-left: 0px;">
+      <a href=".\index.html">Home</a>
+      <a href=".\AboutUs.html">About us</a>
+      <a href="#complaints">Complaints</a>
+      <a href=".\FAQ's.html">FAQ’s</a>
+      <a href=".\signUp-page.html">Sign in</a>
+      
+    </div>
+    <div class="wrapper">
+            <h1>Frequently Asked Questions</h1>
+        <div class="faq">
+            <button class="Questions">
+                What Is this website for?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="Answer">
+            <p>This website is a platform for Students to register their complaints related to the specific authority of the college. We aim to provide a simple and efficient way for students to voice their concerns and get them addressed.</p>
+            </div>
+        </div>
+        <div class="faq">
+            <button class="Questions">
+                How do I register a complaint?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="Answer">
+            <p>To register a complaint, click on the ‘Register Complaint’ button on our homepage. Fill in the necessary details about your complaint. If you haven't created an account first create an account using sign-up. After filling out the required detaills related with your complaint, click ‘Submit’ to register your complaint.</p>
+            </div>
+        </div>
+        <div class="faq">
+            <button class="Questions">
+                What happens after I submit a complaint?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="Answer">
+            <p>After you submit a complaint, it will be reviewed by the admin and will passed to the respected authority if the complaint is valid. You will be notified the status of your complaint via Email.</p>
+            </div>
+        </div>
+        <div class="faq">
+            <button class="Questions">
+                Can I update or delete a complaint after submitting it?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="Answer">
+            <p>No you Cannot But you will be able to watch your previous complaints in 'Complaint History' section.</p>
+            </div>
+        </div>
+        <div class="faq">
+            <button class="Questions">
+                How do I change my account settings?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="Answer">
+            <p>Go to 'Edit profile' section. There you can change the password or required settings of your account.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        var acc= document.getElementsByClassName("Questions");
+        var i;
+
+        for(i=0; i<acc.length; i++){
+            acc[i].addEventListener("click" ,function(){
+                this.classList.toggle("active");
+                this.parentElement.classList.toggle("active");
+
+                var Answer=this.nextElementSibling;
+                if(Answer.style.display ==="block"){
+                    Answer.style.display= "none";
+                }
+                else{
+                    Answer.style.display= "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
