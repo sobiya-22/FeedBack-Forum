@@ -1,10 +1,19 @@
-// Import the functions you need from the SDKs you need
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
 import { getDatabase, set, ref, get, child, remove, push, update } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js"
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+
+document.addEventListener("DOMContentLoaded", function (event) {
+    let changeAuthority = getAdminData().authority;
+    if (changeAuthority) {
+        document.querySelector(".authority-name").innerHTML = 'A';
+    } else {
+        console.error("Admin data not found or invalid.");
+    }
+    displayTable(changeAuthority);
+});
+
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -36,13 +45,6 @@ function closeAuthorityForm() {
     document.querySelector(".open-authority-form").style.display = "none";
 }
 
-document.addEventListener("DOMContentLoaded", function (event) {
-    document.querySelector('.horizontal-bar .authority-name').innerHTML = getAdminData().category;
-});
-
-
-//changing the authority headlines
-
 function getAdminData() {
     // Get the user data from sessionStorage
     let data = sessionStorage.getItem("getAdmin");
@@ -60,9 +62,10 @@ function getAdminData() {
 let heading = document.querySelector(".complaint-table .page-display .heading");
 let eachRow = document.querySelector(".complaint-table .complaints-display .main-table .body");
 
-async function readComplaints() {
-    heading.innerHTML = "All Complaints";
-    // const db = getDatabase();
+async function displayTable(complaintType) {
+    document.querySelector(".authority-name").innerHTML = complaintType + " Authority";
+    heading.innerHTML = complaintType + ' Complaints';
+    
     const dbRef = ref(db);
     get(child(dbRef, 'complaints/'))
         .then((snapshot) => {
@@ -73,29 +76,132 @@ async function readComplaints() {
                 let complaintEmail = snapshot.child('email').val();
                 let complaintCategory = snapshot.child('complaintType').val();
                 let complaintTitle = snapshot.child('title').val();
-                // let complaintDescription = snapshot.child('complaint').val();
-                let rowdata = `<tr>
+                let adminNote = snapshot.child('adminNote').val();
+                let complaintStatus = snapshot.child('status').val();
+                if (complaintCategory === complaintType && complaintStatus==='pending') {
+                    let rowdata = `<tr>
                     <td>${complaintID}</td>
                     <td>${complaintDate}</td>
                     <td>${complaintEmail}</td>
-                    <td>${complaintCategory}</td>
                     <td>${complaintTitle}</td>
+                    <td>${adminNote}</td>
+                    <td>${complaintStatus}</td>
                     <td><button class="status-btn">View Details</button></td>
                 </tr>`;
-                eachRow.innerHTML += rowdata;
+                    eachRow.innerHTML += rowdata;
 
-                // Get all the buttons
-                const buttons = document.querySelectorAll(".status-btn");
-                // Add event listener to each button
-                buttons.forEach((button) => {
-                    button.addEventListener("click", () => {
-                        authorityPopUp(complaintID);
-                        document.querySelector(".open-authority-form").style.display = "flex";
+                    // Get all the buttons
+                    const buttons = document.querySelectorAll(".status-btn");
+                    // Add event listener to each button
+                    buttons.forEach((button) => {
+                        button.addEventListener("click", () => {
+                            authorityPopUp(complaintID);
+                            document.querySelector(".open-authority-form").style.display = "flex";
+                        });
                     });
-                });
+                }
             });
         })
         .catch((error) => {
             console.error("Error reading data:", error);
         });
 }
+// Event listener for the table body to update the authority popup everytime the user clicks on details button
+const tableBody = document.querySelector(".complaint-table .complaints-display .main-table .body");
+tableBody.addEventListener("click", function (event) {
+    if (event.target.tagName === "BUTTON") {
+        const row = event.target.closest("tr");
+        if (row) {
+            let complaintID = row.querySelector("td:first-child").textContent;
+            authorityPopUp(complaintID);
+        }
+    }
+});
+
+function authorityPopUp(complaintID) {
+    let popUpDisplay = document.querySelector(".open-authority-form")
+    popUpDisplay.style.display = "flex";
+
+    let CID = document.querySelector(".open-authority-form .complaint-id");
+    let DateElement = document.querySelector(".open-authority-form .complaint-date");
+    // let CategoryElement = document.querySelector(".open-authority-form .complaint-category")
+    let TitleElement = document.querySelector(".open-authority-form .complaint-title");
+    let DescriptionElement = document.querySelector(".open-authority-form .complaint-description");
+    let complaintStatusElement = document.querySelector(".open-authority-form .complaint-status");
+    let complaintAdminNoteElement = document.querySelector(".open-authority-form .admin-note");
+
+    let complaintDate, complaintEmail, complaintCategory, complaintTitle, complaintDescription,complaintAdminNote, complaintStatus;
+
+    const dbRef = ref(db);
+    get(child(dbRef, 'complaints/'))
+        .then(async (snapshot) => {
+
+            snapshot.forEach((element) => {
+                if (element.key === complaintID) {
+                    complaintDate = element.child('date').val();
+                    complaintEmail = element.child('email').val();
+                    // complaintCategory = element.child('complaintType').val();
+                    complaintTitle = element.child('title').val();
+                    complaintDescription = element.child('complaint').val();
+                    complaintAdminNote = element.child('adminNote').val();
+                    complaintStatus = element.child('status').val();
+
+                    CID.innerHTML = `<strong>Complaint ID: </strong>${complaintID}<br>`;
+                    DateElement.innerHTML = `<strong>Date: </strong>${complaintDate}<br>`;
+                    // CategoryElement.innerHTML = `<strong>Category: </strong>${complaintCategory}<br>`;
+                    TitleElement.innerHTML = `<strong>Title: </strong>${complaintTitle}<br>`;
+                    DescriptionElement.innerHTML = `<strong>Description: </strong>${complaintDescription}<br>`;
+                    complaintAdminNoteElement.innerHTML = `<strong>Admin Note: </strong>${complaintAdminNote}<br>`;
+                    complaintStatusElement.innerHTML = `<strong>Status: </strong>${complaintStatus}<br>`;
+                }
+            });
+        });
+
+        let sendBtn = popUpDisplay.querySelector('#send');
+
+        let newSendBtn = sendBtn.cloneNode(true);
+
+        sendBtn.parentNode.replaceChild(newSendBtn, sendBtn);
+        newSendBtn.addEventListener('click', () => sendMessageToAuthority(complaintID, complaintCategory));
+        
+}
+
+function sendMessageToAuthority(complaintID, complaintCategory) {
+
+    const complaintRef = ref(db, 'complaints/' + complaintID);
+
+    // Update the status in Firebase- setting to in progress
+    update(complaintRef, {
+        status: 'Resolved',
+    }).then(() => {
+        alert("Complaint resolved! ");
+    }).catch((error) => {
+        console.error("Error updating status:", error);
+    });
+
+    complaintStatus = element.child('status').val();
+    let complaintStatusElement = document.querySelector(".open-authority-form .complaint-status");
+    complaintStatusElement.innerHTML = `<strong>Status: </strong>${complaintStatus}<br>`;
+    alert(complaintID + " Resolved! ");
+}
+
+
+
+
+
+
+
+
+// function getAuthority() {
+//     // Get the user data from sessionStorage
+  
+// let data = sessionStorage.getItem("getAdmin");
+
+// // Parse the JSON string back into an object
+// let user = JSON.parse(data);
+
+// // Now you can access the user's data
+// // let email = user.email;
+// // return email;
+// return user;
+// }

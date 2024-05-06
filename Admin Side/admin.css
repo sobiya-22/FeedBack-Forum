@@ -214,24 +214,6 @@ thead{
     border-radius: 7px;
     background-color: #ebe8eb;
   }
-/* .open-authority-form input[type=submit]{
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
-    background-color:rgb(109, 49, 164);
-    border-radius: 25px;
-    margin: 20px;
-    position: absolute;
-    left: 28%;
-    bottom: 1px;
-}
-.open-authority-form input[type=submit]:focus{
-    background-color: rgb(94, 11, 167);;
-    box-shadow: 1px 5px 2px 2px rgb(210, 181, 237);
-} */
 .open-authority-form .authority-btn{
     border: none;
     color: white;
@@ -251,7 +233,6 @@ thead{
     background-color:rgb(62, 193, 108);
 }
 .open-authority-form #send:hover{
-    /* box-shadow: 0 8px 16px 0 rgb(49, 158, 87); */
     transition: .2s;
     transform: scale(1.02);
     background-color: rgb(2, 99, 2);
@@ -286,22 +267,11 @@ thead{
 #pending-btn{
     background-color: rgb(232, 67, 67);
 }
-#processing-btn{
-    background-color: rgb(177, 74, 22);
+#resolved-btn{
+    background-color: rgb(21, 123, 41);
 }
-/* .open-authority-form img{
-    height: 90px;
-    width: 90px;
-    padding: 3px;
-    background-color: rgba(248, 246, 249, 0.8);;;
-    border-radius: 50%;
-    border: 1.2px solid  rgb(94, 11, 167);;
-    position: absolute;
-    left: 38%;
-    top: -13%;
-} */
 
-/* .body::-webkit-scrollbar {
+.body::-webkit-scrollbar {
     width: 0.2rem;
     height: 0.2rem;
     display: none;
@@ -315,4 +285,4 @@ thead{
 
 .body:hover::-webkit-scrollbar-thumb {
     visibility: visible;
-} */
+}

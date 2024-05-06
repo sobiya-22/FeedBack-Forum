@@ -7,12 +7,7 @@ import { getDatabase, set, ref, get, child } from "https://www.gstatic.com/fireb
 // import {select} from "https://cdn.jsdelivr.net/gh/RiteshBorse/testing/home.js";
 import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-storage.js";
 import { generateRandomNumber } from "./stud-complaint.js";
-// import { getUserData } from "../login-page.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBoZwThtmjBNBUR1QAIwVJhcsow9Qa_uBU",
   authDomain: "feedback-forum-43ab1.firebaseapp.com",
@@ -33,16 +28,16 @@ async function addComplaint(data) {
   alert('data added');
 }
 
-async function readData() {
-  const dbRef = ref(getDatabase());
-  const snapshot = await get(child(dbRef, 'complaints/'));
-  if (snapshot.exists()) {
-    return snapshot.val();
-  }
-  else {
-    return false;
-  }
-};
+// async function readData() {
+//   const dbRef = ref(getDatabase());
+//   const snapshot = await get(child(dbRef, 'complaints/'));
+//   if (snapshot.exists()) {
+//     return snapshot.val();
+//   }
+//   else {
+//     return false;
+//   }
+// };
 
 export async function readAllEvents() {
   let allEvent = '';

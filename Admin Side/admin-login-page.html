@@ -27,7 +27,6 @@
         <a href="javascript:void(0)" class="close-toggle-btn" onclick="closeNav()">&times;</a>
         <a href="#"><i class="fi fi-sr-user-pen"></i>Edit Profile</a>
         <a href="#"><i class="fi fi-sr-box-tissue"></i>Report Issue</a>
-        <!-- <a href="#"><i class="fas fa-history"></i> Complaint History</a> -->
         <a href="#"><i class="fi fi-br-exit"></i>Logout</a>
     </div>
     <button class="open-toggle-btn" onclick="openNav()">&#9776;</button>
@@ -41,11 +40,9 @@
                     <tr>
                         <th>Complaint ID</th>
                         <th>Date</th>
-                        <!-- <th>Name</th> -->
                         <th>Email</th>
                         <th>Category</th>
                         <th>Title</th>
-                        <!-- <th>Description</th> -->
                         <th>Details</th>
                     </tr>
                 </thead>
@@ -66,7 +63,6 @@
             <p class="complaint-description"></p>
             <p class="complaint-status"></p>
             <textarea name="authority-msg" class="msg-send" cols="33" rows="3" placeholder="Add a message"></textarea>
-            <!-- <input type="submit"> -->
             <button class="authority-btn" id="send">Send</button>
             <button class="authority-btn" id="discard" onclick="discardComplaint()">Discard</button>
             </label>
@@ -75,6 +71,7 @@
 </body>
 <script src="/Admin Side/admin-login-page.js" ></script>
 <script type="module" src="/Admin Side/firebaseConfig.js"></script>
+<script src="../test.js" type="module"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.11.0/firebase-app.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script type="text/javascript"

@@ -16,13 +16,12 @@
 <body>
     <nav class="horizontal-bar">
         <img src="/Images/website-logo-transBG.png" alt="Feed-back logo">
-        <p class="authority-name">Authority</p>
+        <p class="authority-name"></p>
     </nav>
     <div id="admin-profile" class="sidepanel">
         <a href="javascript:void(0)" class="close-toggle-btn" onclick="closeNav()">&times;</a>
         <a href="#"><i class="fi fi-sr-user-pen"></i>Edit Profile</a>
         <a href="#"><i class="fi fi-sr-box-tissue"></i>Report Issue</a>
-        <!-- <a href="#"><i class="fas fa-history"></i> Complaint History</a> -->
         <a href="#"><i class="fi fi-br-exit"></i>Logout</a>
     </div>
     <button class="open-toggle-btn" onclick="openNav()">&#9776;</button>
@@ -37,10 +36,10 @@
                     <tr>
                         <th>Complaint ID</th>
                         <th>Date</th>
-                        <!-- <th>Name</th> -->
                         <th>Email</th>
                         <th>Title</th>
                         <th>Admin Note</th>
+                        <th>Status</th>
                         <th>Details</th>
                     </tr>
                 </thead>
@@ -58,13 +57,13 @@
             <p class="complaint-email"></p>
             <p class="complaint-title">Title</p>
             <p class="complaint-description">Description</p>
-            <p class="Admin Note">AdminNote</p>
+            <p class="admin-note">AdminNote</p>
             <p class="complaint-status">Status</p>
             <button class="authority-btn" id="send">Resolve</button>
             </label>
         </form>
     </div>
 </body>
-<script src="authority.js"></script>
+<script src="authority.js" type="module"></script>
 
 </html>

@@ -3,11 +3,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/fireba
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-analytics.js";
 import { getDatabase, set, ref, get, child, remove, push, update } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js"
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyBoZwThtmjBNBUR1QAIwVJhcsow9Qa_uBU",
     authDomain: "feedback-forum-43ab1.firebaseapp.com",
@@ -41,7 +36,6 @@ let resolvedBtn = document.querySelector('.horizontal-bar .resolved-js');
 
 async function readAllComplaints() {
     heading.innerHTML = "All Complaints";
-    // const db = getDatabase();
     const dbRef = ref(db);
     get(child(dbRef, 'complaints/'))
         .then((snapshot) => {
@@ -52,7 +46,6 @@ async function readAllComplaints() {
                 let complaintEmail = snapshot.child('email').val();
                 let complaintCategory = snapshot.child('complaintType').val();
                 let complaintTitle = snapshot.child('title').val();
-                // let complaintDescription = snapshot.child('complaint').val();
                 let rowdata = `<tr>
                     <td>${complaintID}</td>
                     <td>${complaintDate}</td>
@@ -231,7 +224,7 @@ async function readPendingResolvedEvents(statusType) {
             });
 
     }
-    else if (statusType === 'resolved') {
+    else if (statusType === 'Resolved') {
         heading.innerHTML = 'Resolved Complaints';
         const dbRef = ref(db);
         get(child(dbRef, 'complaints/'))
@@ -250,19 +243,19 @@ async function readPendingResolvedEvents(statusType) {
                         <td>Emails</td>
                         <td>${complaintCategory}</td>
                         <td>${complaintTitle}</td>
-                        <td><button class="status-btn" id="pending-btn">Pending</button></td>
+                        <td><button class="status-btn" id="resolved-btn">Resolved</button></td>
                     </tr>`;
                         eachRow.innerHTML += rowdata;
 
                         // Get all the buttons
-                        const buttons = document.querySelectorAll(".status-btn");
-                        // Add event listener to each button
-                        buttons.forEach((button) => {
-                            button.addEventListener("click", () => {
-                                authorityPopUp(complaintID);
-                                document.querySelector(".open-authority-form").style.display = "flex";
-                            });
-                        });
+                        // const buttons = document.querySelectorAll(".status-btn");
+                        // // Add event listener to each button
+                        // buttons.forEach((button) => {
+                        //     button.addEventListener("click", () => {
+                        //         authorityPopUp(complaintID);
+                        //         document.querySelector(".open-authority-form").style.display = "flex";
+                        //     });
+                        // });
                     }
                 })
 
@@ -281,6 +274,6 @@ pendingBtn.addEventListener('click', async () => {
     await readPendingResolvedEvents('pending');
 })
 resolvedBtn.addEventListener('click', async () => {
-    await readPendingResolvedEvents('resolved');
+    await readPendingResolvedEvents('Resolved');
 })
 

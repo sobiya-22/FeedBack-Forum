@@ -21,7 +21,7 @@
 
 export function auth(){
   if(JSON.parse(sessionStorage.getItem("getUser")) == null || JSON.parse(sessionStorage.getItem("getAdmin"))==NULL){
-      window.location.href = 'index.html';
+      window.location.href = '../index.html';
   } 
 }
   // Initialize Firebase
