@@ -167,7 +167,7 @@ thead{
     align-content: center;
     border-radius: 17px;
     position: relative;
-    display: flex;
+    display: none;
 }
 .open-authority-form h3{
     position: absolute;
@@ -178,13 +178,7 @@ thead{
     margin-top: 50px;
     margin-bottom: 40px;
 }
-/* /
-    width: 100%;
-    padding: 10px 8px;
-    border: 1px solid rgb(109, 49, 164);
-    border-radius: 7px;
-    background-color: #ebe8eb;
-  } */
+
 .open-authority-form .authority-btn{
     border: none;
     color: white;
@@ -195,8 +189,6 @@ thead{
     border-radius: 25px;
     margin: 20px;
     position: absolute;
-    /* left: 35%; */
-    /* bottom: 0; */
 }
 .open-authority-form #send{
     left: 32%;
@@ -204,7 +196,6 @@ thead{
     bottom: 0;
 }
 .open-authority-form #send:hover{
-    /* box-shadow: 0 8px 16px 0 rgb(49, 158, 87); */
     transition: .2s;
     transform: scale(1.02);
     background-color: rgb(2, 99, 2);

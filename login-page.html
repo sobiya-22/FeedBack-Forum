@@ -23,8 +23,8 @@
   <div class="login-a-page admin-hidden">
     <img class="admin-img" width="100" height="100" src="./Images/admin-loginpage-logo.png" alt="administrator-male--v1"/>
     <h1>Login as Admin</h1>
-    <input class="crn"type="text" placeholder="Enter Mail">
-    <input class="pass" type="password" placeholder=" Enter password">
+    <input class="crn js-login-a-mail"type="text" placeholder="Enter Mail">
+    <input class="pass js-login-a-password" type="password" placeholder=" Enter password">
     <button class="login-a-btn">Login</button>
     <button class="student-panel switch-a">Login as Student</button>
   </div>
@@ -47,9 +47,9 @@
     window.location.href = "./signUp-page.html"
   });
 
-  document.querySelector('.login-a-btn').addEventListener('click',()=>{
-    window.location.href = "Admin%20Side/admin-login-page.html"
-  })
+  // document.querySelector('.login-a-btn').addEventListener('click',()=>{
+  //   window.location.href = "Admin%20Side/admin-login-page.html"
+  // })
 </script>
 <script src="login-page.js" type="module"></script>
 </html>
