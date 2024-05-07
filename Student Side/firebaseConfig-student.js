@@ -39,20 +39,20 @@ async function addComplaint(data) {
 //   }
 // };
 
-export async function readAllEvents() {
-  let allEvent = '';
-  const db = getDatabase();
-  const dbRef = ref(db);
-  get(child(dbRef, 'complaints/'))
-    .then(async (snapshot) => {
+// export async function readAllEvents() {
+//   let allEvent = '';
+//   const db = getDatabase();
+//   const dbRef = ref(db);
+//   get(child(dbRef, 'complaints/'))
+//     .then(async (snapshot) => {
 
-      snapshot.forEach(element => {
-        console.log(element.val());
+//       snapshot.forEach(element => {
+//         console.log(element.val());
 
-      });
-    });
+//       });
+//     });
 
-}
+// }
 
 let complaintType = document.querySelector('.js-type');
 let image = document.querySelector('.js-image');

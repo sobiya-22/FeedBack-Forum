@@ -6,17 +6,28 @@ import { getDatabase, set, ref, get, child, remove, push, update } from "https:/
 
 document.addEventListener("DOMContentLoaded", function (event) {
     let changeAuthority = getAdminData().authority;
-    if (changeAuthority) {
-        document.querySelector(".authority-name").innerHTML = 'A';
-    } else {
-        console.error("Admin data not found or invalid.");
-    }
+    console.log(changeAuthority);
+    // if (changeAuthority) {
+    //     document.querySelector(".authority-name").innerHTML = 'A';
+    // } else {
+    //     console.error("Admin data not found or invalid.");
+    // }
     displayTable(changeAuthority);
 });
 
+/* Set the width of the sidebar to 250px (show it) */
+function openNav() {
+    document.getElementById("admin-profile").style.width = "250px";
+}
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+/* Set the width of the sidebar to 0 (hide it) */
+function closeNav() {
+    document.getElementById("admin-profile").style.width = "0";
+}
+function closeAuthorityForm() {
+    document.querySelector(".open-authority-form").style.display = "none";
+}
+
 const firebaseConfig = {
     apiKey: "AIzaSyBoZwThtmjBNBUR1QAIwVJhcsow9Qa_uBU",
     authDomain: "feedback-forum-43ab1.firebaseapp.com",
@@ -32,18 +43,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 const db = getDatabase();
 
-/* Set the width of the sidebar to 250px (show it) */
-function openNav() {
-    document.getElementById("admin-profile").style.width = "250px";
-}
 
-/* Set the width of the sidebar to 0 (hide it) */
-function closeNav() {
-    document.getElementById("admin-profile").style.width = "0";
-}
-function closeAuthorityForm() {
-    document.querySelector(".open-authority-form").style.display = "none";
-}
 
 function getAdminData() {
     // Get the user data from sessionStorage
@@ -78,6 +78,7 @@ async function displayTable(complaintType) {
                 let complaintTitle = snapshot.child('title').val();
                 let adminNote = snapshot.child('adminNote').val();
                 let complaintStatus = snapshot.child('status').val();
+
                 if (complaintCategory === complaintType && complaintStatus==='pending') {
                     let rowdata = `<tr>
                     <td>${complaintID}</td>
@@ -124,13 +125,13 @@ function authorityPopUp(complaintID) {
 
     let CID = document.querySelector(".open-authority-form .complaint-id");
     let DateElement = document.querySelector(".open-authority-form .complaint-date");
-    // let CategoryElement = document.querySelector(".open-authority-form .complaint-category")
+    // let ComplaintEmailElement = document.querySelector(".open-authority-form .complaint-email");
     let TitleElement = document.querySelector(".open-authority-form .complaint-title");
     let DescriptionElement = document.querySelector(".open-authority-form .complaint-description");
     let complaintStatusElement = document.querySelector(".open-authority-form .complaint-status");
     let complaintAdminNoteElement = document.querySelector(".open-authority-form .admin-note");
 
-    let complaintDate, complaintEmail, complaintCategory, complaintTitle, complaintDescription,complaintAdminNote, complaintStatus;
+    let complaintDate, complaintTitle, complaintDescription,complaintAdminNote, complaintStatus;
 
     const dbRef = ref(db);
     get(child(dbRef, 'complaints/'))
@@ -139,8 +140,7 @@ function authorityPopUp(complaintID) {
             snapshot.forEach((element) => {
                 if (element.key === complaintID) {
                     complaintDate = element.child('date').val();
-                    complaintEmail = element.child('email').val();
-                    // complaintCategory = element.child('complaintType').val();
+                    // complaintEmail = element.child('email').val();
                     complaintTitle = element.child('title').val();
                     complaintDescription = element.child('complaint').val();
                     complaintAdminNote = element.child('adminNote').val();
@@ -148,7 +148,7 @@ function authorityPopUp(complaintID) {
 
                     CID.innerHTML = `<strong>Complaint ID: </strong>${complaintID}<br>`;
                     DateElement.innerHTML = `<strong>Date: </strong>${complaintDate}<br>`;
-                    // CategoryElement.innerHTML = `<strong>Category: </strong>${complaintCategory}<br>`;
+                    // ComplaintEmailElement.innerHTML = `<strong>Email: </strong>${complaintEmail}<br>`;
                     TitleElement.innerHTML = `<strong>Title: </strong>${complaintTitle}<br>`;
                     DescriptionElement.innerHTML = `<strong>Description: </strong>${complaintDescription}<br>`;
                     complaintAdminNoteElement.innerHTML = `<strong>Admin Note: </strong>${complaintAdminNote}<br>`;
@@ -162,11 +162,11 @@ function authorityPopUp(complaintID) {
         let newSendBtn = sendBtn.cloneNode(true);
 
         sendBtn.parentNode.replaceChild(newSendBtn, sendBtn);
-        newSendBtn.addEventListener('click', () => sendMessageToAuthority(complaintID, complaintCategory));
+        newSendBtn.addEventListener('click', () => sendMessageToAuthority(complaintID));
         
 }
 
-function sendMessageToAuthority(complaintID, complaintCategory) {
+function sendMessageToAuthority(complaintID) {
 
     const complaintRef = ref(db, 'complaints/' + complaintID);
 
@@ -178,11 +178,11 @@ function sendMessageToAuthority(complaintID, complaintCategory) {
     }).catch((error) => {
         console.error("Error updating status:", error);
     });
-
-    complaintStatus = element.child('status').val();
+    alert(complaintID + " Resolved! ");
+    let complaintStatus = element.child('status').val();
     let complaintStatusElement = document.querySelector(".open-authority-form .complaint-status");
     complaintStatusElement.innerHTML = `<strong>Status: </strong>${complaintStatus}<br>`;
-    alert(complaintID + " Resolved! ");
+    
 }
 
 

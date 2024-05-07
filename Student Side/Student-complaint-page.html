@@ -22,26 +22,21 @@
             </div>
         </nav>-->
 
-    <nav>
-        <!-- <img src="E:\Student-Side-Things\Images\Admin-page-logo.png" width="240" ,heihgt="130" class="user">-->
-        <div id="admin-profile" class="sidepanel">
-            <a href="javascript:void(0)" class="close-toggle-btn" onclick="closeNav()">&times;</a>
-            <a href="#"><i class="fas fa-user-edit"></i>Edit Profile</a>
-            <a href="#"><i class="fa-solid fa-box-tissue"></i></i>Report Issue</a>
-            <a href="#"><i class="fas fa-history"></i> Complaint History</a>
-            <a href="#" class="logout-btn"><i class="fas fa-sign-out-alt"></i>Logout</a>
-        </div>
-        <button class="open-toggle-btn" onclick="openNav()">&#9776;</button>
-        <div class="profile"></div>
-        <img src="" class="logo">
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="../AboutUs.html">About us</a></li>
-            <li><a href="#">Get Help</a></li>
-            <li><a href="#">Contact us</a></li>
-        </ul>
-        </div>
-    </nav>
+<div class="horizontal-bar">
+    <img src="../Images/website-logo-transBG.png" height="50px" alt="" style="margin-left: 0px;">
+  <button class="home"><a href="../index.html">Home</a></button>
+  <button class="gethelp"><a href="../FAQ'S.html">Get Help</a></button>
+  <button class="about"><a href="../AboutUs.html">About Us</a></button>
+  
+</div>
+    <div id="admin-profile" class="sidepanel">
+        <a href="javascript:void(0)" class="close-toggle-btn" onclick="closeNav()">&times;</a>
+        <a href="#"><i class="fas fa-user-edit"></i>Edit Profile</a>
+        <a href="../FAQ'S.html"><i class="fa-solid fa-box-tissue"></i></i>Report Issue</a>
+        <a href="./complaintHistory.html"><i class="fas fa-history"></i> Complaint History</a>
+        <a href="../index.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i>Logout</a>
+    </div>
+    <button class="open-toggle-btn" onclick="openNav()">&#9776;</button>
     <div class="form">
         <p>Select Complaint domain: *
             <select name="Complaint type" id="domain" class="js-type" required>

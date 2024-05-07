@@ -9,19 +9,59 @@
 }
 
 /*top nav*/
-nav {
-    background-color: rgb(90, 2, 117);
-    width: 100%;
-    padding: right 180px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.horizontal-bar {
+    background-color: rgb(236, 220, 250);
     position: relative;
+  }
+  
+  .horizontal-bar button {
+    position: absolute;
+    top: 25%;
+    font-size: 16px;
+    font-family: Cabin;
+    color: white;
+    padding: 17px;
+    border-radius: 2rem;
+    border: none;
+    background-color: rgb(109, 49, 164);
+  
+  }
+  
+  .horizontal-bar button:hover {
+    box-shadow: 0 8px 16px 0 rgb(109, 49, 164, 0.7);
+    transition: .2s;
+    transform: scale(1.02);
+  }
+  
+  .horizontal-bar img {
+    height: 5%;
+    width: 20%;
+    margin: 0;
+  }
+  .horizontal-bar a {
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  .horizontal-bar button:hover{
+    box-shadow: 0 8px 16px 0 rgb(109, 49, 164,0.7);
+    transition: .2s;
+    transform: scale(1.02);
+    background-color: rgb(165, 97, 229);
+  }
 
-
-}
-
-nav ul {
+  .horizontal-bar .about{
+    right: 5%;
+    margin-top: 0px;
+  }
+  .horizontal-bar .gethelp{
+    right:17%;
+  }
+  .horizontal-bar .home{
+    right: 28%;
+  }
+/* nav ul {
     width: 100%;
     text-align: left;
 }
@@ -45,7 +85,7 @@ nav ul li a {
 nav ul li a:hover {
     color: #fff;
     text-shadow: 0 0 10px #e1e3e1, 0 0 20px #e1e3e1, 0 0 30px #e1e3e1, 0 0 40px #e1e3e1;
-}
+} */
 
 .user {
     cursor: pointer;
@@ -57,7 +97,7 @@ nav ul li a:hover {
 }
 
 /*side nav*/
-/*.side-navbar{
+/* .side-navbar{
     z-index: 1;
     position: fixed;
     overflow-x: hidden;
@@ -69,7 +109,8 @@ nav ul li a:hover {
     padding-top: 60px;
     margin-left: 0;
     background-color:rgb(90, 2, 117) ;
-}
+} */
+/*
 .side-navbar a{
     text-decoration: none;
     display: block;
@@ -167,13 +208,13 @@ nav ul li a:hover {
     /* Adjust the border style as desired */
     border: 1px solid rgb(234, 193, 234);
     /* Adjust the border color and width */
-    margin-left: 270px;
-    margin-top: 10px;
-    background-color: rgb(245, 236, 255);
+    margin-left: 390px;
+    margin-top: 0px;
+    background-color: rgb(235, 220, 249);
     border-radius: 10px;
     font-family: "Libre Baskerville", "static";
     box-shadow: 10px 10px 25px rgba(63, 0, 135, 0.25);
-    color: rgb(103, 0, 103);
+    color: rgb(109, 49, 164);
 }
 
 h3,
