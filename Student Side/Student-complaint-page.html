@@ -59,7 +59,7 @@
             <input type="file" class="js-image" id="imageUpload" name="imageUpload" accept="image/*">
             <label for="anonymity">Keep my identity anonymous</label>
             <input type="checkbox" class="js-anonymity" id="anonymity" name="anonymity">
-        <p><button class="js-submit" type="submit" required>Submit</button></p>
+        <p><button class="js-submit" type="submit" required onclick="openPopup()">Submit</button></p>
         <div class="popup" id="popup" aria-required="true">
             <img src="/Images/finaltick.png" alt="">
             <h2>Thank You!</h2>
@@ -111,6 +111,5 @@
 </script>
 <script src="firebaseConfig-student.js" type="module"></script>
 <script src="studentTestFile.js" type="module"></script>
-<script src="../test.js" type="module"></script>
 
 </html>

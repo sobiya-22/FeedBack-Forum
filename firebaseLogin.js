@@ -19,11 +19,11 @@
     measurementId: "G-VR6YM99MC7"
   };
 
-export function auth(){
-  if(JSON.parse(sessionStorage.getItem("getUser")) == null || JSON.parse(sessionStorage.getItem("getAdmin"))==NULL){
-      window.location.href = '../index.html';
-  } 
-}
+// export function auth(){
+//   if(JSON.parse(sessionStorage.getItem("getUser")) == null || JSON.parse(sessionStorage.getItem("getAdmin"))==NULL){
+//       window.location.href = '../index.html';
+//   } 
+// }
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
